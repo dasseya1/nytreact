@@ -9,20 +9,20 @@ export default class Search extends Component {
     this.State = {term: "", startYear: "", endYear: ""};
     }
 
-    handleChange = (event) => {
+    handleChange(event) {
 
         var newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);
 
     }
-    setTerm = (term) => {
+    setTerm(term) {
         this.setState({
             queryTerm: term + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "0101"
         });
     }
 
-    handleSubmit = (event) => {
+    handleSubmit(event) {
 
         event.preventDefault();
 
