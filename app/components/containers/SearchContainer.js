@@ -1,14 +1,14 @@
-var React = require("react");
-var helpers = require("../../utils/nytHelpers");
-var Search = require("./panels/Search");
+import React, {Component } from 'react';
+import helpers from '../../utils/nytHelpers';
+import Search from './panels/Search';
 
-const SearchContainer = React.createClass({
+export default class SavedContainer extends Component {
+    constructor() {
+        super();
+        this.state = { queryTerm: "" }
+    }
 
-    getInitialState: function() {
-
-        return {queryTerm: ""};
-    },
-    saveArticle: function(response) {
+    saveArticle = (response) => {
 
         helpers.postArticle(response)
 
@@ -37,9 +37,9 @@ const SearchContainer = React.createClass({
             }
         }.bind(this));
 
-    },
+    }
 
-    componentDidUpdate: function() {
+    componentDidUpdate = () => {
 
         helpers.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear).then(function(data) {
             var component = this;
@@ -70,13 +70,13 @@ const SearchContainer = React.createClass({
 
         }.bind(this));
 
-    },
+    }
 
-    setTerm: function(term) {
+    setTerm = (term) => {
         this.setState({queryTerm: term});
-    },
+    }
     // Here we describe this component's render method
-    render: function() {
+    render() {
         return (
             <div>
                 <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results}/>
@@ -86,6 +86,4 @@ const SearchContainer = React.createClass({
         );
     }
 
-});
-
-module.exports = SearchContainer;
+}

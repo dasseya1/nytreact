@@ -1,15 +1,15 @@
 // Include React
-var React = require("react");
-var helpers = require("../../utils/nytHelpers");
-var Saved = require("./panels/Saved");
+import React, { Component } from 'react';
+import helpers from '../../utils/nytHelpers';
+import Saved from './panels/Saved';
 
-const SavedContainer = React.createClass({
+export default class SavedContainer extends Component {
+    constructor() {
+        super();
+        this.state = {articles: []}
+    }
 
-    getInitialState: function() {
-        return {articles: []}
-    },
-
-    componentDidMount: function() {
+    componentDidMount = () => {
         // Get the saved articles
         helpers.getArticles().then(function(response) {
             var component = this;
@@ -33,9 +33,9 @@ const SavedContainer = React.createClass({
                 this.setState({articles: articulo});
             }
         }.bind(this));
-    },
+    }
 
-    removeArticleClick: function(response) {
+    removeArticleClick = (response) => {
         helpers.deleteArticle(response)
         console.log(response);
         // update state of parent
@@ -62,9 +62,9 @@ const SavedContainer = React.createClass({
             }
         }.bind(this));
 
-    },
+    }
 
-    render: function() {
+    render () {
         return (
             <div className="container">
                 <div className="row">
@@ -85,6 +85,4 @@ const SavedContainer = React.createClass({
         );
     }
 
-});
-
-module.exports = SavedContainer;
+}
