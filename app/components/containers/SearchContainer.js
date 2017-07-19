@@ -8,7 +8,7 @@ export default class SavedContainer extends Component {
         this.state = { queryTerm: "" }
     }
 
-    saveArticle = (response) => {
+    saveArticle(response){
 
         helpers.postArticle(response)
 
@@ -39,7 +39,7 @@ export default class SavedContainer extends Component {
 
     }
 
-    componentDidUpdate = () => {
+    componentDidUpdate() {
 
         helpers.runQuery(this.state.queryTerm, this.state.startYear, this.state.endYear).then(function(data) {
             var component = this;
@@ -72,7 +72,7 @@ export default class SavedContainer extends Component {
 
     }
 
-    setTerm = (term) => {
+    setTerm (term){
         this.setState({queryTerm: term});
     }
     // Here we describe this component's render method

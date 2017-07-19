@@ -9,7 +9,7 @@ export default class SavedContainer extends Component {
         this.state = {articles: []}
     }
 
-    componentDidMount = () => {
+    componentDidMount() {
         // Get the saved articles
         helpers.getArticles().then(function(response) {
             var component = this;
@@ -35,7 +35,7 @@ export default class SavedContainer extends Component {
         }.bind(this));
     }
 
-    removeArticleClick = (response) => {
+    removeArticleClick(response) {
         helpers.deleteArticle(response)
         console.log(response);
         // update state of parent
