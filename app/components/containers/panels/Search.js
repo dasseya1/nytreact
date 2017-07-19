@@ -1,37 +1,37 @@
 // Include React
-import React, {Component } from 'react';
+var React = require("react");
 
 // Create the Search Component
-export default class Search extends Component {
- constructor() {
-     super();
-    // Here we set a generic state associated with the text being searched for
-    this.State = {term: "", startYear: "", endYear: ""};
-    }
+var Search = React.createClass({
 
-    handleChange(event) {
+    // Here we set a generic state associated with the text being searched for
+    getInitialState: function() {
+        return {term: "", startYear: "", endYear: ""};
+    },
+
+    handleChange: function(event) {
 
         var newState = {};
         newState[event.target.id] = event.target.value;
         this.setState(newState);
 
-    }
-    setTerm(term) {
+    },
+    setTerm: function(term) {
         this.setState({
             queryTerm: term + "&begin_date=" + startYear + "0101" + "&end_date=" + endYear + "0101"
         });
-    }
+    },
 
-    handleSubmit(event) {
+    handleSubmit: function(event) {
 
         event.preventDefault();
 
         this.props.setTerm(this.state.term + "&begin_date=" + this.state.startYear + "0101" + "&end_date=" + this.state.endYear + "0101");
 
         this.setState({term: "", startYear: "", endYear: ""});
-    }
+    },
     // Here we descibe this component's render method
-    render() {
+    render: function() {
         return (
             <div className="container">
                 <div className="row">
@@ -81,4 +81,7 @@ export default class Search extends Component {
             </div>
         );
     }
-}
+});
+
+// Export the component back for use in other files
+module.exports = Search;
