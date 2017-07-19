@@ -1,8 +1,8 @@
 
-import moongoose from 'mongoose';
-const Schema = mongoose.Schema;
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-let articleSchema = new Schema({
+var articleSchema = new Schema({
 
     title: { type: String, unique: true },
     date: {type: Date, default: Date.now},
@@ -10,6 +10,6 @@ let articleSchema = new Schema({
 
 });
 
-let Article = mongoose.model('Article', articleSchema);
+var Article = mongoose.model('Article', articleSchema);
 
 module.exports = Article;

@@ -1,7 +1,8 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import db from './mongoCredentials';
+var express = require('express');
+var bodyParser = require ('body-parser');
+var mongoose = require ('mongoose');
+var uri = require ('./mongoCredentials');
+var Article = require ('./models/Article') ;
 var app = express();
 
 app.use(bodyParser.json());

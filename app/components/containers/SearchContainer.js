@@ -72,14 +72,14 @@ export default class SavedContainer extends Component {
 
     }
 
-    setTerm (term){
+    setTerm(term){
         this.setState({queryTerm: term});
     }
     // Here we describe this component's render method
     render() {
         return (
             <div>
-                <Search setTerm={this.setTerm} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results}/>
+                <Search setTerm={this.setTerm.bind(this)} setStartYear={this.startYear} setEndYear={this.endYear} results={this.state.results}/>
 
             </div>
 
